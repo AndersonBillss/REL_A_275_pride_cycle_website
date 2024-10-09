@@ -1,0 +1,12 @@
+.parallax-background{
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+    height: 600px;
+    position: relative;
+    background-color: black;
+    z-index: 2;
+}
+.parallax-img{
+    position: absolute;
+}
