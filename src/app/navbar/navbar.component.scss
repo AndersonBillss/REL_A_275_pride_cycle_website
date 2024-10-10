@@ -7,3 +7,10 @@
     align-items: center;
     background-color: $primary-color;
 }
+
+.nav-item{
+    border-bottom: 3px rgba(0, 0, 0, 0) solid;
+}
+.selected{
+    border-bottom: 3px $secondary-color solid;
+}
