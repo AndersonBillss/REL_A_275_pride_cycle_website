@@ -11,7 +11,11 @@ export class ParallaxBackgroundComponent {
   @ViewChild('parallaxImg') parallaxImg!: ElementRef;
   @ViewChild('parallaxContainer') parallaxContainer!: ElementRef;
 
-  @Input() img!: string;
+  @Input() src!: string;
+  @Input() height!: number;
+  @Input() fadeTransitionSeconds?: number = 0;
+
+  opacity: string = "0%"
 
   prevWindowWidth: number = window.innerWidth
   imgCenterX: number = 0
@@ -20,12 +24,11 @@ export class ParallaxBackgroundComponent {
   ngAfterViewInit() {
     const img = this.parallaxImg.nativeElement
     const container = this.parallaxContainer.nativeElement
-    
+    container.style.height = `${this.height}px`    
     window.addEventListener('resize', () => this.handleWindowResize(img, container, false))
     document.addEventListener('scroll', () => this.parallaxScroll(img, container))
 
     this.handleWindowResize(img, container, true)
-
   }
 
 
@@ -59,5 +62,10 @@ export class ParallaxBackgroundComponent {
     const containerTop = container.offsetTop
     const translation = scrollY/2 - containerTop/2
     img.style.transform = `translate(-${this.imgCenterX}px, ${translation - this.imgCenterY}px)`
+  }
+
+  imgLoad(img: HTMLElement, container: HTMLElement){
+    this.handleWindowResize(img, container, true)
+    this.opacity = "100%"
   }
 }

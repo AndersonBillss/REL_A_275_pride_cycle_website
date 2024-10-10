@@ -1,12 +1,11 @@
 .parallax-background{
-    display: flex;
     flex-grow: 1;
     overflow: hidden;
-    height: 600px;
     position: relative;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
     z-index: 2;
 }
 .parallax-img{
     position: absolute;
+    transition: opacity 0;
 }

@@ -1,8 +1,13 @@
-<div #parallaxContainer class="parallax-background">
+<div 
+#parallaxContainer 
+class="parallax-background"
+>
     <img 
     #parallaxImg 
-    src="{{img}}" 
-    (load)="handleWindowResize(parallaxImg, parallaxContainer, true)"
+    src="{{src}}" 
+    (load)="imgLoad(parallaxImg, parallaxContainer)"
     class="parallax-img" 
+    [style.opacity]="opacity"
+    [style.transition]="'opacity ' + fadeTransitionSeconds + 's'"
     />
 </div>
