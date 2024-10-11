@@ -1,0 +1,14 @@
+.grid{
+    display: flex;
+    flex-direction: column;
+    border: 2px gray solid;
+    width: min-content;
+}
+.row{
+    display: flex;
+}
+.cell{
+    width: 30px;
+    height: 30px;
+    border: 2px gray solid;
+}

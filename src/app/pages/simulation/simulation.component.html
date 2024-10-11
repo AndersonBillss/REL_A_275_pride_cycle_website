@@ -1,1 +1,38 @@
 <h1>Simulation</h1>
+Prosperity (economic growth, wealth, or resources)
+Pride (greed, social inequality)
+Righteousness (how people live according to principles)
+Suffering (could represent a negative score when society fails)
+Humility (how they respond to suffering)
+<div>Prosperity</div>
+<mat-slider>
+      <input matSliderThumb [(value)]="Prosperity_factor">
+</mat-slider>
+
+<div>Pride</div>
+<mat-slider min="0" max="100" step="1">
+      <input matSliderThumb [(value)]="pride_factor">
+</mat-slider>
+
+<div>Righteousness</div>
+<mat-slider min="0" max="100" step="1">
+      <input matSliderThumb [(value)]="Righteousness_factor">
+</mat-slider>
+
+<div>Suffering</div>
+<mat-slider min="0" max="100" step="1">
+      <input matSliderThumb [(value)]="Suffering_factor">
+</mat-slider>
+
+<div>Humility</div>
+<mat-slider min="0" max="100" step="1">
+      <input matSliderThumb [(value)]="Humility_factor">
+</mat-slider>
+
+<div class="grid">
+    <div *ngFor="let row of grid" class="row">
+        <div *ngFor="let cell of row" class="cell"
+            [style.background-color]="'rgb(' + cell.red + ',' + cell.green + ',' + cell.blue + ')'"
+        ></div>
+    </div>
+</div>
