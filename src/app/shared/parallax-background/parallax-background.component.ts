@@ -21,7 +21,7 @@ export class ParallaxBackgroundComponent {
   imgCenterY: number = 0
 
   ngAfterViewInit() {
-    //set up elements
+    //get elements
     const img = this.parallaxImg.nativeElement
     const container = this.parallaxContainer.nativeElement
     container.style.height = `${this.height}px`    
@@ -60,10 +60,12 @@ export class ParallaxBackgroundComponent {
   }
 
   parallaxScroll(img: HTMLElement, container: HTMLElement){
-    const scrollY = window.scrollY
-    const containerTop = container.offsetTop
-    const translation = scrollY/this.factor - containerTop/this.factor
-    img.style.transform = `translate(-${this.imgCenterX}px, ${translation - this.imgCenterY}px)`
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY
+      const containerTop = container.offsetTop
+      const translation = scrollY/this.factor - containerTop/this.factor
+      img.style.transform = `translate(-${this.imgCenterX}px, ${translation - this.imgCenterY}px)`
+    });
   }
 
   //the image only appears after it loads so that you can't see it snapping into place
