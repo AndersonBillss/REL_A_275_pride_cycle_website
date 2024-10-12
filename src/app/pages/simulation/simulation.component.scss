@@ -1,16 +1,16 @@
+@import "../../../variables";
+
 .grid{
     display: flex;
     flex-direction: column;
-    border: 2px gray solid;
     width: min-content;
 }
 .row{
     display: flex;
 }
 .cell{
-    width: 30px;
-    height: 30px;
-    border: 2px gray solid;
+    width: 8px;
+    height: 8px;
 }
 .center-col{
     display: flex;
@@ -28,6 +28,22 @@
     align-items: center;
     padding: 5px;
 }
+.key-cell{
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border: 2px gray solid;
+}
 .key-label{
     margin-left: 5px;
+}
+
+.play-button{
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+}
+.play-icon{
+    font-size: 24px;
 }

@@ -2,39 +2,62 @@
       <mat-card-title>simulation</mat-card-title>
 
       <mat-card-content class="center-col">
-            <div>Prosperity</div>
-            <mat-slider>
-                  <input matSliderThumb [(value)]="Prosperity_factor">
+            <div>speed</div>
+            <mat-slider
+            [min]="1" 
+            [max]="10" 
+            [step]=".5"
+            >
+                  <input matSliderThumb [(value)]="speed" [step]=".05">
             </mat-slider>
-            
-            <div>Pride</div>
-            <mat-slider min="0" max="100" step="1">
-                  <input matSliderThumb [(value)]="pride_factor">
-            </mat-slider>
+
+            <button class="play-button" mat-button raised (click)="togglePlay()">
+                  @if(playing){
+                        <mat-icon class="play-icon" fontIcon="pause"></mat-icon>
+                  } @else {
+                        <mat-icon class="play-icon" fontIcon="play_arrow"></mat-icon>
+                  }
+            </button>
+       
+            <div class="grid">
+                  <div *ngFor="let row of grid" class="row">
+                        <div *ngFor="let cell of row" class="cell"
+                        [style.background-color]="cell.getRgb()"
+                        ></div>
+                  </div>
+            </div>
+
 
             <h2>KEY</h2>
             <div class="key">
                   <div class="key-item">
                         <div 
                         [style.background-color]="'rgb(255,0,0)'" 
-                        class="key-item cell">
+                        class="key-cell cell">
                         </div>
-                        <label class="key-label">Pride</label>
+                        <label class="key-label">Prideful</label>
+                  </div>
+                  <div class="key-item">
+                        <div 
+                        [style.background-color]="'rgb(0,0,255)'" 
+                        class="key-cell cell">
+                        </div>
+                        <label class="key-label">Humble</label>
                   </div>
 
                   <div class="key-item">
                         <div 
-                        [style.background-color]="'rgb(0,0,255)'" 
-                        class="key-item cell">
+                        [style.background-color]="'rgb(0,0,0)'" 
+                        class="key-cell cell">
                         </div>
-                        <label class="key-label">Prosperity</label>
+                        <label class="key-label">Poor</label>
                   </div>
-            </div>
-            <div class="grid">
-                  <div *ngFor="let row of grid" class="row">
-                        <div *ngFor="let cell of row" class="cell"
-                        [style.background-color]="cell.getRgb()"
-                        ></div>
+                  <div class="key-item">
+                        <div 
+                        [style.background-color]="'rgb(255,255,255)'" 
+                        class="key-cell cell">
+                        </div>
+                        <label class="key-label">Prosperous</label>
                   </div>
             </div>
       </mat-card-content>
