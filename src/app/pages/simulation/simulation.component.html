@@ -20,13 +20,16 @@
             </button>
        
             <div class="grid">
-                  <div *ngFor="let row of grid" class="row">
-                        <div *ngFor="let cell of row" class="cell"
+                  <div *ngFor="let row of simulationGrid.data; let y=index" class="row">
+                        <div *ngFor="let cell of row; let x=index" class="cell"
                         [style.background-color]="cell.getRgb()"
+                        (click)="makePrideful(x,y)"
                         ></div>
                   </div>
             </div>
-
+            <button (click)="test(25,25)">
+                  test
+            </button>
 
             <h2>KEY</h2>
             <div class="key">
