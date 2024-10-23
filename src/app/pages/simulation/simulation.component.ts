@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
-import { cell, grid } from '../../utils/grid';
+import * as gridUtils from '../../utils/grid';
 
 @Component({
   selector: 'app-simulation',
@@ -27,7 +27,9 @@ export class SimulationComponent implements OnInit{
   public playing = false
 
 
-  public simulationGrid: grid = new grid(50,50)
+  public gridWidth: number = 50;
+  public gridHeight: number = 50;
+  public simulationGrid: gridUtils.cell[][] = gridUtils.createGrid()
 
 
   ngOnInit(): void {
@@ -50,35 +52,39 @@ export class SimulationComponent implements OnInit{
     }
   }
 
-  calculateNextGrid(): grid{
-    let newGrid: grid = this.simulationGrid
-    for(let x=0; x<newGrid.width; x++){
-      for(let y=0; y<newGrid.height; y++){
-        const box = newGrid.getCell(x,y)
-        const surroundingCells = newGrid.getSurroundingCells(x,y)
+  calculateNextGrid(): gridUtils.cell[][]{
+    let newGrid: gridUtils.cell[][] = gridUtils.createGrid()
+
+    for(let x=0; x<gridUtils.gridWidth; x++){
+      for(let y=0; y<gridUtils.gridHeight; y++){
+        const box = gridUtils.getCell(this.simulationGrid, x,y)
+        const newBox = gridUtils.getCell(newGrid, x,y)
+        newBox.pride = box.pride
+        newBox.prosperity = box.prosperity
+
+        const surroundingCells = gridUtils.getSurroundingCells(this.simulationGrid, x,y)
         let totalPride = 0
         for(let item of surroundingCells){
           totalPride += item.pride
         }
-        box.increasePride(totalPride/30)
-        box.increaseProsperity(-totalPride/60)
-        box.increaseProsperity((box.pride)/10)
+        gridUtils.increasePride(newBox, totalPride/30)
+        gridUtils.increaseProsperity(newBox, -totalPride/60)
+        gridUtils.increaseProsperity(newBox, (box.pride)/10)
       }
     }
     return newGrid
   }
 
   makePrideful(x: number, y: number){
-    this.simulationGrid.getCell(x,y).pride = 100
+    gridUtils.getCell(this.simulationGrid, x,y).pride = 100
   }
   
-  test(x: number,y: number){
-    const targetCell: cell = this.simulationGrid.getCell(x,y)
-    targetCell.increasePride(-100)
-    const surrounding: cell[] = this.simulationGrid.getSurroundingCells(x,y)
-    for(const item of surrounding){
-      item.increasePride(100)
-      item.increaseProsperity(100)
-    }
+  test(){
+    console.log(this.simulationGrid)
+  }
+
+  //make this available to the template
+  getRgb(targetCell: gridUtils.cell){
+    return gridUtils.getRgb(targetCell)
   }
 }
