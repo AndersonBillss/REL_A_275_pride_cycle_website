@@ -26,6 +26,7 @@ export class SimulationComponent implements OnInit{
   public speed: number=5
   public playing = false
 
+  public selectedClickOperation = ''
 
   public gridWidth: number = 50;
   public gridHeight: number = 50;
@@ -68,15 +69,29 @@ export class SimulationComponent implements OnInit{
           totalPride += item.pride
         }
         gridUtils.increasePride(newBox, totalPride/30)
-        gridUtils.increaseProsperity(newBox, -totalPride/60)
-        gridUtils.increaseProsperity(newBox, (box.pride)/10)
+        gridUtils.increaseProsperity(newBox, -totalPride/3)
+        gridUtils.increaseProsperity(newBox, (box.pride)/1)
       }
     }
     return newGrid
   }
 
-  makePrideful(x: number, y: number){
-    gridUtils.getCell(this.simulationGrid, x,y).pride = 100
+  handleBoxClick(x: number, y: number){
+    const targetCell = gridUtils.getCell(this.simulationGrid, x,y)
+    switch(this.selectedClickOperation){
+      case "pride":
+        targetCell.pride = 50
+        break
+      case "humility":
+        targetCell.pride = -50
+        break
+      default:
+        return
+
+    }
+  }
+  setSelectedClickOperation(operation: string){
+    this.selectedClickOperation = operation
   }
   
   test(){

@@ -47,3 +47,18 @@
 .play-icon{
     font-size: 24px;
 }
+
+.boxes{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.box{
+    width: 25px;
+    height: 25px;
+    border: 2px rgba(0, 0, 0, 0) solid;
+    margin: 5px;
+}
+.selected{
+    border: 2px lightblue solid;
+}
