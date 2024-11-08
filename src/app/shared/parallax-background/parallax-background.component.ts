@@ -48,7 +48,7 @@ export class ParallaxBackgroundComponent {
         img.style.width = `${container.offsetWidth}px`
       } else {
         //if the image is wider than required
-        this.imgCenterY = 0
+        this.imgCenterY = (window.innerHeight - container.offsetHeight)
         this.imgCenterX = (img.offsetWidth - container.offsetWidth) / 2
         img.style.height = `${containerHeightRequired}px`
         img.style.width = 'auto'
@@ -69,8 +69,10 @@ export class ParallaxBackgroundComponent {
   }
 
   //the image only appears after it loads so that you can't see it snapping into place
-  imgLoad(img: HTMLElement, container: HTMLElement){
-    this.handleWindowResize(img, container, true)
+  imgLoad(){
+    this.handleWindowResize(this.parallaxImg.nativeElement, this.parallaxContainer.nativeElement, true)
+    this.parallaxScroll(this.parallaxImg.nativeElement, this.parallaxContainer.nativeElement)
+    this.handleWindowResize(this.parallaxImg.nativeElement, this.parallaxContainer.nativeElement, true)
     this.opacity = "100%"
   }
 }

@@ -68,9 +68,10 @@ export class SimulationComponent implements OnInit{
         for(let item of surroundingCells){
           totalPride += item.pride
         }
+        const normalizedSurroundingPride: number = totalPride/8
         gridUtils.increasePride(newBox, totalPride/30)
-        gridUtils.increaseProsperity(newBox, -totalPride/3)
-        gridUtils.increaseProsperity(newBox, (box.pride)/1)
+        gridUtils.increaseProsperity(newBox, box.pride)
+        gridUtils.increaseProsperity(newBox, -normalizedSurroundingPride*1.01)
       }
     }
     return newGrid
@@ -87,7 +88,6 @@ export class SimulationComponent implements OnInit{
         break
       default:
         return
-
     }
   }
   setSelectedClickOperation(operation: string){
