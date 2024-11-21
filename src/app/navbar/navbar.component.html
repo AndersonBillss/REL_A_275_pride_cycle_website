@@ -1,28 +1,49 @@
-<div class="nav-top">
-    <div
-    class="nav-item"
-    [class]="currentPage === ''?'selected':''"
-    >
-        <button [routerLink]="''" mat-button>
-            <h1>Pride Cycle Simulation</h1>
-        </button>
+<div class="navbar">
+    <div class="nav-top">
+        <div 
+        class="nav-item" 
+        [class]="selectedPage === '/'?'selected':''"
+        #homeLink
+        >
+            <button  
+            mat-button 
+            [routerLink]="''"
+            >
+                <h1>Pride Cycle Simulation</h1>
+            </button>
+        </div>
+
+        <div 
+        class="nav-item" 
+        [class]="selectedPage === '/about'?'selected':''"
+        #aboutLink
+        >
+            <button  
+            mat-button
+            [routerLink]="'about'"
+            >
+                About
+            </button>
+        </div>
+
+        <div 
+        class="nav-item" 
+        [class]="selectedPage === '/simulation'?'selected':''"
+        #simulationLink
+        >
+            <button  
+            mat-button
+            [routerLink]="'simulation'"
+            >
+                Simulation
+            </button>
+        </div>
     </div>
 
-    <div
-    class="nav-item"
-    [class]="currentPage === 'about'?'selected':''"
+    <div 
+    #underline
+    class="underline"
+    [style.transition]="'margin ' + navAnimationTime + ', width ' + navAnimationTime"
     >
-        <button [routerLink]="'about'" mat-button>        
-            <div>About</div>
-        </button>
-    </div>
-
-    <div
-    class="nav-item"
-    [class]="currentPage === 'simulation'?'selected':''"
-    >
-        <button [routerLink]="'simulation'" mat-button>        
-            <div>Simulation</div>
-        </button>
     </div>
 </div>

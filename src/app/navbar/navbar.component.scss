@@ -1,16 +1,47 @@
 @import '../../variables';
 
-.nav-top{
-    padding: 15px 30px;
+$nav-animation-time: .5s;
+
+.navbar{
+    position: relative;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
     background-color: $primary-color;
 }
 
-.nav-item{
-    border-bottom: 3px rgba(0, 0, 0, 0) solid;
+.nav-top{
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-.selected{
-    border-bottom: 3px $secondary-color solid;
+
+.nav-item{
+    padding: 0px 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.underline{
+    height: 4px;
+    width: 20px;
+    background-color: $secondary-color;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    transition: margin $nav-animation-time, width $nav-animation-time;
+}
+
+@media screen and (max-width: 600px) {
+    .nav-top{
+        flex-direction: column;
+    }
+    .nav-item{
+        border-bottom: rgb(0, 0, 0, 0) 3px solid;
+    }
+    .selected{
+        border-bottom: $secondary-color 3px solid;
+    }
+    .underline{
+        display: none;
+    }
 }
