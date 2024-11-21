@@ -3,8 +3,8 @@
     class="nav-item"
     [class]="currentPage === ''?'selected':''"
     >
-        <button mat-button>
-            <h1 [routerLink]="''">Pride Cycle Simulation</h1>
+        <button [routerLink]="''" mat-button>
+            <h1>Pride Cycle Simulation</h1>
         </button>
     </div>
 
@@ -12,8 +12,8 @@
     class="nav-item"
     [class]="currentPage === 'about'?'selected':''"
     >
-        <button mat-button>        
-            <div [routerLink]="'about'">About</div>
+        <button [routerLink]="'about'" mat-button>        
+            <div>About</div>
         </button>
     </div>
 
@@ -21,8 +21,8 @@
     class="nav-item"
     [class]="currentPage === 'simulation'?'selected':''"
     >
-        <button mat-button>        
-            <div [routerLink]="'simulation'">Simulation</div>
+        <button [routerLink]="'simulation'" mat-button>        
+            <div>Simulation</div>
         </button>
     </div>
 </div>
