@@ -1,24 +1,33 @@
 <div class="navbar">
     <div class="nav-top">
         <div 
-        class="nav-item" 
+        class=""
         [class]="selectedPage === '/'?'selected':''"
         #homeLink
         >
             <button  
+            class="nav-button main-nav-item"
             mat-button 
             [routerLink]="''"
             >
-                <h1>Pride Cycle Simulation</h1>
+                <div
+                class="nav-button"
+                >
+                    <img 
+                    (load)="update()"
+                    class="nav-img" 
+                    src="favicon.webp">
+                    <h1>Pride Cycle Simulation</h1>
+                </div>
             </button>
         </div>
 
         <div 
-        class="nav-item" 
         [class]="selectedPage === '/about'?'selected':''"
         #aboutLink
         >
             <button  
+            class="nav-button"
             mat-button
             [routerLink]="'about'"
             >
@@ -27,11 +36,11 @@
         </div>
 
         <div 
-        class="nav-item" 
         [class]="selectedPage === '/simulation'?'selected':''"
         #simulationLink
         >
             <button  
+            class="nav-button"
             mat-button
             [routerLink]="'simulation'"
             >

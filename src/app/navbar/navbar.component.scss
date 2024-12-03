@@ -2,6 +2,19 @@
 
 $nav-animation-time: .5s;
 
+.nav-img{
+    height: 80px;
+    width: auto;
+    margin-right: 15px;
+}
+.main-nav-item{
+    height: 60px;
+}
+.nav-button{
+    display: flex;
+    align-items: center;
+}
+
 .navbar{
     position: relative;
     display: flex;
@@ -10,14 +23,14 @@ $nav-animation-time: .5s;
 }
 
 .nav-top{
-    padding: 15px;
+    padding-top: 5px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 .nav-item{
-    padding: 0px 10px;
+    padding: 0px 5px;
     justify-content: center;
     align-items: center;
 }
@@ -27,7 +40,7 @@ $nav-animation-time: .5s;
     width: 20px;
     background-color: $secondary-color;
     margin-left: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     transition: margin $nav-animation-time, width $nav-animation-time;
 }
 
