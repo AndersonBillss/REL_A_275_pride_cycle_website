@@ -20,7 +20,6 @@
 
 .key{
     display: flex;
-    flex-direction: column;
     padding: 10px;
 }
 .key-item{
@@ -56,9 +55,9 @@
 .box{
     width: 25px;
     height: 25px;
-    border: 2px rgba(0, 0, 0, 0) solid;
+    border: 3px rgba(0, 0, 0, 0) solid;
     margin: 5px;
 }
 .selected{
-    border: 2px lightblue solid;
+    border: 3px black solid;
 }

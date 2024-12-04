@@ -2,12 +2,22 @@
 @import 'variables';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: white; }
 
 .text-page{
-    padding: 15px 40px;
+    background-color: $light-gray;
+    padding: 15px 8%;
+    margin: 15px 10%;
+    border-radius: 5px;
+    // box-shadow: $primary-text 0 0 5px 0px;
 }
 .text-page h1{
     justify-self: center;
     text-align: center;
+    border-bottom: $secondary-color 4px solid;
+}
+.text-page p{
+    font-size: 20px;
+    text-indent: 40px;
+    line-height: 30px;
 }

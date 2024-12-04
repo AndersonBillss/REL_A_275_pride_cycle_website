@@ -94,9 +94,6 @@ export class SimulationComponent implements OnInit{
     this.selectedClickOperation = operation
   }
   
-  test(){
-    console.log(this.simulationGrid)
-  }
 
   //make this available to the template
   getRgb(targetCell: gridUtils.cell){

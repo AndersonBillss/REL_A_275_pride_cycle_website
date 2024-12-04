@@ -25,7 +25,6 @@ export class NavbarComponent implements /* OnInit */AfterViewInit {
   @ViewChild("underline") underlineRef?: ElementRef;
 
   @ViewChild("homeLink") homeLinkRef?: ElementRef;
-  @ViewChild("aboutLink") aboutLinkRef?: ElementRef;
   @ViewChild("simulationLink") simulationLinkRef?: ElementRef;
   
   public elements: navElement[] = []
@@ -43,10 +42,6 @@ export class NavbarComponent implements /* OnInit */AfterViewInit {
       {
         page: "/",
         element: this.homeLinkRef
-      },
-      {
-        page: "/about",
-        element: this.aboutLinkRef
       },
       {
         page: "/simulation",
