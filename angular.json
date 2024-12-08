@@ -27,6 +27,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.webp",
+              "src/_redirects",
               "src/assets"
             ],
             "styles": [
@@ -87,7 +88,8 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "favicon.webp",
+              "src/favicon.webp",
+              "src/_redirects",
               "src/assets"
             ],
             "styles": [
