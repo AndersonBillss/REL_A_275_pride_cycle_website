@@ -62,16 +62,23 @@ export class SimulationComponent implements OnInit{
         const newBox = gridUtils.getCell(newGrid, x,y)
         newBox.pride = box.pride
         newBox.prosperity = box.prosperity
+        newBox.prosperityHistory = box.prosperityHistory
 
         const surroundingCells = gridUtils.getSurroundingCells(this.simulationGrid, x,y)
         let totalPride = 0
         for(let item of surroundingCells){
           totalPride += item.pride
         }
+        if(newBox.prosperityHistory.length > 1){
+          newBox.prosperityHistory = newBox.prosperityHistory.slice(-100)
+        }
+        newBox.prosperityHistory.push(newBox.prosperity)
+
         const normalizedSurroundingPride: number = totalPride/8
-        gridUtils.increasePride(newBox, totalPride/30)
-        gridUtils.increaseProsperity(newBox, box.pride)
+        gridUtils.increasePride(newBox, totalPride/20)
+        gridUtils.increaseProsperity(newBox, box.pride/20) 
         gridUtils.increaseProsperity(newBox, -normalizedSurroundingPride*1.01)
+        gridUtils.increasePride(newBox, (gridUtils.getAvgProsperityHistory(newBox) + (.5-Math.random())/5)/2)
       }
     }
     return newGrid

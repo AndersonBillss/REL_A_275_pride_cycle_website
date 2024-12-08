@@ -13,6 +13,7 @@ export const gridWidth: number = 50
 export interface cell {
   pride: number,
   prosperity: number,
+  prosperityHistory: number[]
 }
 
 export function getRgb(targetCell: cell){
@@ -63,7 +64,8 @@ export function createGrid(): cell[][]{
       for(let x=0; x<gridWidth; x++){x
           data[y].push({
             pride: prideNeutral,
-            prosperity: prosperityNeutral
+            prosperity: prosperityNeutral,
+            prosperityHistory: []
           })
       }
   }
@@ -72,6 +74,17 @@ export function createGrid(): cell[][]{
 
 export function getCell(data: cell[][], x: number,y: number): cell{
   return data[y][x]
+}
+
+export function getAvgProsperityHistory(targetCell: cell){
+  let prideHistoryAvg: number = 0
+  let i = 0
+  for(const num of targetCell.prosperityHistory){
+    i++
+    prideHistoryAvg += ((num-50) * i) / targetCell.prosperityHistory.length;
+  }
+  prideHistoryAvg /= targetCell.prosperityHistory.length
+  return prideHistoryAvg
 }
 
 export function getSurroundingCells(data: cell[][], x: number,y: number): cell[]{
@@ -95,6 +108,10 @@ export function getSurroundingCells(data: cell[][], x: number,y: number): cell[]
       if(withinGridBounds){
           result.push(data[resultY][resultX])
       }
+  }
+  const targetCell = getCell(data, x, y)
+  while(result.length < 8){
+    result.push({prosperity: targetCell.prosperity, pride: targetCell.pride, prosperityHistory: []})
   }
   return result
 }
